@@ -52,10 +52,16 @@ func getURL(id string) (URL, error) {
 	return url, nil
 }
 
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Dwaipayan")
+}
+
 func main() {
 	fmt.Println("Dwaipayan Biswas")
 	OriginalURL := "https://github.com/dwaipayan7?tab=overview&from=2024-11-01&to=2024-11-08"
 	generateShortURL(OriginalURL)
+
+	http.HandleFunc("/", handler)
 
 	fmt.Println("Starting server on port 3000")
 	err := http.ListenAndServe(":3000", nil)
